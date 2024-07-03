@@ -4,6 +4,7 @@ using UBC.Core.Domain.Filters;
 using UBC.Core.Domain.Interfaces.Services;
 using UBC.Core.Service.DTO;
 using UBC.Core.Service.DTO.Filters;
+using UBC.Core.Service.DTO.Students;
 using UBC.Core.Service.Facades.Interfaces;
 
 namespace UBC.Core.Service.Facades

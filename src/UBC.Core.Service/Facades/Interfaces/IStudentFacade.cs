@@ -1,5 +1,6 @@
 ﻿using UBC.Core.Service.DTO;
 using UBC.Core.Service.DTO.Filters;
+using UBC.Core.Service.DTO.Students;
 
 namespace UBC.Core.Service.Facades.Interfaces
 {

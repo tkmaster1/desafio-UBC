@@ -1,14 +1,18 @@
 ﻿using UBC.Core.Data.Context;
 using UBC.Core.Data.Repository;
+using UBC.Core.Data.Repository.Identity;
 using UBC.Core.Domain.Interfaces.Notifications;
 using UBC.Core.Domain.Interfaces.Repositories;
+using UBC.Core.Domain.Interfaces.Repositories.Identity;
 using UBC.Core.Domain.Interfaces.Services;
 using UBC.Core.Domain.Interfaces.Services.Identity;
 using UBC.Core.Domain.Notifications;
 using UBC.Core.Service.Application;
+using UBC.Core.Service.Application.Identity;
 using UBC.Core.Service.Facades;
 using UBC.Core.Service.Facades.Identity;
 using UBC.Core.Service.Facades.Interfaces;
+using UBC.Core.Service.Facades.Interfaces.Identity;
 
 namespace UBC.Core.WebApi.Configurations
 {
@@ -28,46 +32,28 @@ namespace UBC.Core.WebApi.Configurations
 
             #region Application - Facade
 
+            services.AddTransient<ILoginRegisterUserFacade, LoginRegisterUserFacade>();
+            services.AddTransient<IUserFacade, UserFacade>();
             services.AddScoped<IStudentFacade, StudentFacade>();
-
-            #region UserIdentity
-
-            //  services.AddTransient<ILoginRegisterUserIdentityFacade, LoginRegisterUserIdentityFacade>();
-            //services.AddTransient<IUserIdentityFacade, UserIdentityFacade>();
-            //services.AddTransient<IUserIdentityClaimFacade, UserIdentityClaimFacade>();
-
-            #endregion
 
             #endregion
 
             #region Domain
 
+            services.AddScoped<IUserLoginAppService, UserLoginAppService>();
+            services.AddTransient<ILoginRegisterUserAppService, LoginRegisterUserAppService>();
+            services.AddTransient<IUserAppService, UserAppService>();
             services.AddScoped<IStudentAppService, StudentAppService>();
-
-            #region UserIdentity
-
-            // services.AddTransient<ILoginRegisterUserIdentityAppService, LoginRegisterUserIdentityAppService>();
-            //services.AddTransient<IUserIdentityAppService, UserIdentityAppService>();
-            //services.AddTransient<IUserIdentityClaimAppService, UserIdentityClaimAppService>();
-            services.AddScoped<IUserAppService, UserAppService>();
-                      
-            #endregion
 
             #endregion
 
             #region InfraData
 
             services.AddScoped<MeuContexto>();
-            // services.AddScoped<IdentityContext>();
+            services.AddScoped<IdentityContext>();
 
+            services.AddTransient<IUserRepository, UserRepository>();
             services.AddScoped<IStudentRepository, StudentRepository>();
-
-            #region UserIdentity
-
-            //services.AddTransient<IUserIdentityRepository, UserIdentityRepository>();
-            //services.AddTransient<IUserIdentityClaimRepository, UserIdentityClaimRepository>();
-
-            #endregion
 
             #endregion
         }

@@ -19,15 +19,15 @@ builder.Services.AddSwaggerConfiguration(builder.Configuration);
 // DependencyInjectionConfig
 builder.Services.AddDependencyInjectionConfiguration(builder.Configuration);
 
-//// Inicio AutoMapper
+// Inicio AutoMapper
 builder.Services.AddAutoMapper(typeof(StudentProfile));//UserIdentityProfile
 
 #region Databases Configurations
 
 builder.Services.AddDatabaseConfiguration(builder.Configuration);
 
-//// Identity Configuration Extension Method and DbConnection
-//builder.Services.AddIdentityConfiguration(builder.Configuration);
+// Identity Configuration Extension Method and DbConnection
+builder.Services.AddIdentityConfiguration(builder.Configuration);
 
 #endregion
 
@@ -46,28 +46,3 @@ await app.RunAsync();
 
 #endregion
 
-//var builder = WebApplication.CreateBuilder(args);
-
-//// Add services to the container.
-
-//builder.Services.AddControllers();
-//// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-//builder.Services.AddEndpointsApiExplorer();
-//builder.Services.AddSwaggerGen();
-
-//var app = builder.Build();
-
-//// Configure the HTTP request pipeline.
-//if (app.Environment.IsDevelopment())
-//{
-//    app.UseSwagger();
-//    app.UseSwaggerUI();
-//}
-
-//app.UseHttpsRedirection();
-
-//app.UseAuthorization();
-
-//app.MapControllers();
-
-//app.Run();

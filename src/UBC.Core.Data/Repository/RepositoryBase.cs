@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 using UBC.Core.Data.Context;
-using UBC.Core.Domain.Entities;
 using UBC.Core.Domain.Interfaces.Repositories;
 
 namespace UBC.Core.Data.Repository
@@ -11,7 +10,7 @@ namespace UBC.Core.Data.Repository
         #region Properties
 
         protected readonly MeuContexto DbContext;
-     //   protected readonly IdentityContext DbIdentityContext;
+        protected readonly IdentityContext DbIdentityContext;
         protected readonly DbSet<TEntity> DbSet;
 
         #endregion
@@ -24,11 +23,11 @@ namespace UBC.Core.Data.Repository
             DbSet = DbContext.Set<TEntity>();
         }
 
-        //public RepositoryBase(IdentityContext contextIdentity)
-        //{
-        //    DbIdentityContext = contextIdentity;
-        //    DbSet = DbIdentityContext.Set<TEntity>();
-        //}
+        public RepositoryBase(IdentityContext contextIdentity)
+        {
+            DbIdentityContext = contextIdentity;
+            DbSet = DbIdentityContext.Set<TEntity>();
+        }
 
         #endregion
 
@@ -50,10 +49,7 @@ namespace UBC.Core.Data.Repository
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
-        public virtual async Task<bool> Exist(int code)
-        {
-            return await GetByCodeAsync(code) != null;
-        }        
+        public virtual async Task<bool> Exist(int code) => await GetByCodeAsync(code) != null;
 
         /// <summary>
         /// Buscar
@@ -90,28 +86,19 @@ namespace UBC.Core.Data.Repository
         /// Adicionar
         /// </summary>
         /// <param name="entities"></param>
-        public virtual void ToAdd(IEnumerable<TEntity> entities)
-        {
-            DbSet.AddRange(entities.ToArray());
-        }
+        public virtual void ToAdd(IEnumerable<TEntity> entities) => DbSet.AddRange(entities.ToArray());
 
         /// <summary>
         /// Atualizar
         /// </summary>
         /// <param name="entity"></param>
-        public virtual void ToUpdate(TEntity entity)
-        {
-            DbSet.Update(entity);
-        }
+        public virtual void ToUpdate(TEntity entity) => DbSet.Update(entity);
 
         /// <summary>
         /// Atualizar
         /// </summary>
         /// <param name="entities"></param>
-        public virtual void ToUpdate(IEnumerable<TEntity> entities)
-        {
-            DbSet.UpdateRange(entities.ToList());
-        }
+        public virtual void ToUpdate(IEnumerable<TEntity> entities) => DbSet.UpdateRange(entities.ToList());
 
         public virtual void ToRemove(int codigo)
         {
@@ -121,46 +108,34 @@ namespace UBC.Core.Data.Repository
                 DbSet.Remove(entity);
         }
 
-        public virtual void ToRemove(TEntity entity)
-        {
-            DbSet.Remove(entity);
-        }
+        public virtual void ToRemove(TEntity entity) => DbSet.Remove(entity);
 
         /// <summary>
         /// Salvar
         /// </summary>
         /// <returns></returns>
-        public int ToSave()
-        {
-            return DbContext.SaveChanges();
-        }
+        public int ToSave() => DbContext.SaveChanges();
 
-        public async Task<int> ToSaveChangesAsync()
-        {
-            return await DbContext.SaveChangesAsync();
-        }
+        public async Task<int> ToSaveChangesAsync() => await DbContext.SaveChangesAsync();
 
         #endregion
 
         #region Identity
 
-        //public virtual void UpdateIdentity(TEntity entity)
-        //{
-        //    var entry = DbIdentityContext.Entry(entity);
+        public virtual void UpdateIdentity(TEntity entity)
+        {
+            var entry = DbIdentityContext.Entry(entity);
 
-        //    DbSet.Attach(entity);
+            DbSet.Attach(entity);
 
-        //    entry.State = EntityState.Modified;
-        //}
+            entry.State = EntityState.Modified;
+        }
 
-        ///// <summary>
-        ///// SalvarIdentity
-        ///// </summary>
-        ///// <returns></returns>
-        //public async Task<int> SaveIdentity()
-        //{
-        //    return await DbIdentityContext.SaveChangesAsync();
-        //}
+        /// <summary>
+        /// SalvarIdentity
+        /// </summary>
+        /// <returns></returns>
+        public async Task<int> SaveIdentity() => await DbIdentityContext.SaveChangesAsync();
 
         #endregion
 
@@ -169,8 +144,8 @@ namespace UBC.Core.Data.Repository
             if (DbContext != null)
                 DbContext.Dispose();
 
-            //if (DbIdentityContext != null)
-            //    DbIdentityContext.Dispose();
+            if (DbIdentityContext != null)
+                DbIdentityContext.Dispose();
 
             GC.SuppressFinalize(this);
         }

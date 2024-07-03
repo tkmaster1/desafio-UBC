@@ -1,23 +1,15 @@
-﻿using System.Security.Claims;
+﻿using Microsoft.AspNetCore.Identity;
+using UBC.Core.Domain.Entities;
+using UBC.Core.Domain.Models;
 
 namespace UBC.Core.Domain.Interfaces.Services.Identity
 {
-    public interface IUserAppService
+    public interface IUserAppService : IDisposable
     {
-        string Name { get; }
+        Task<UserEntity> FindByEmail(string email);
 
-        Guid GetUserId();
+        Task<UserEntity> GetUserIdentityById(string codeUser);
 
-        string GetUserEmail();
-
-        bool IsAuthenticated();
-
-        bool IsInRole(string role);
-
-        string ObterUserToken();
-
-        string ObterUserRefreshToken();
-
-        IEnumerable<Claim> GetClaimsIdentity();
+        //   Task<Pagination<UserEntity>> GetListByFilter(UserIdentityFilter filter);
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace UBC.Core.Service.DTO
+namespace UBC.Core.Service.DTO.Students
 {
     public class StudentRequestDTO
     {

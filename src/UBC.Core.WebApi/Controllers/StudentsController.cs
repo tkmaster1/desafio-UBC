@@ -1,21 +1,23 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using UBC.Core.Domain.Interfaces.Notifications;
 using UBC.Core.Domain.Interfaces.Services.Identity;
 using UBC.Core.Service.DTO;
 using UBC.Core.Service.DTO.Filters;
+using UBC.Core.Service.DTO.Students;
 using UBC.Core.Service.Facades.Interfaces;
 using UBC.Core.WebApi.Models.Responses;
 
 namespace UBC.Core.WebApi.Controllers
 {
-    [ApiController]
+    [Authorize]
     [Route("api/[controller]")]
     public class StudentsController : MainAPIController
     {
         #region Properties
 
         private readonly IStudentFacade _studentFacade;
-        private readonly IUserAppService _user;
+        private readonly IUserLoginAppService _user;
 
         #endregion
 
@@ -23,7 +25,7 @@ namespace UBC.Core.WebApi.Controllers
 
         public StudentsController(IStudentFacade studentFacade,
                             INotificador notificador,
-                            IUserAppService user) : base(notificador, user)
+                            IUserLoginAppService user) : base(notificador, user)
         {
             _studentFacade = studentFacade;
             _user = user;

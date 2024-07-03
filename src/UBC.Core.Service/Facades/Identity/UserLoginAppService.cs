@@ -4,7 +4,7 @@ using UBC.Core.Domain.Interfaces.Services.Identity;
 
 namespace UBC.Core.Service.Facades.Identity
 {
-    public class UserAppService : IUserAppService
+    public class UserLoginAppService : IUserLoginAppService
     {
         #region Properties
 
@@ -14,7 +14,7 @@ namespace UBC.Core.Service.Facades.Identity
 
         #region Construtor
 
-        public UserAppService(IHttpContextAccessor accessor)
+        public UserLoginAppService(IHttpContextAccessor accessor)
         {
             _accessor = accessor;
         }

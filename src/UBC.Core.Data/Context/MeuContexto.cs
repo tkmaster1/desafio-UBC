@@ -8,7 +8,7 @@ namespace UBC.Core.Data.Context
     {
         #region Constructor
 
-        public MeuContexto(DbContextOptions options) : base(options)
+        public MeuContexto(DbContextOptions<MeuContexto> options) : base(options)
         {
             ChangeTracker.LazyLoadingEnabled = false;
             ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;

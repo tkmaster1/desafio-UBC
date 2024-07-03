@@ -34,7 +34,7 @@ namespace UBC.Core.WebApi.Configurations
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddResponseCaching();
 
-          //  services.Configure<EmailEntityModel>(configuration.GetSection("EmailConfigurations"));
+            //  services.Configure<EmailEntityModel>(configuration.GetSection("EmailConfigurations"));
 
             services.Configure<GzipCompressionProviderOptions>(options => options.Level = CompressionLevel.Optimal);
 
@@ -46,7 +46,7 @@ namespace UBC.Core.WebApi.Configurations
 
             services.AddDistributedMemoryCache();
 
-         //   services.AddConfigureSameSiteCookies();
+            //   services.AddConfigureSameSiteCookies();
 
             services.AddCors();
 
@@ -55,7 +55,7 @@ namespace UBC.Core.WebApi.Configurations
                 options.SuppressAsyncSuffixInActionNames = false;
             });
 
-          //  IdentityModelEventSource.ShowPII = true;
+      //      IdentityModelEventSource.ShowPII = true;
 
             var provider = services.BuildServiceProvider();
 
@@ -90,9 +90,9 @@ namespace UBC.Core.WebApi.Configurations
                  }
              );
 
-         //   app.UseIdentityConfiguration();
+            app.UseIdentityConfiguration();
 
-          //  app.UseLoggingConfiguration(loggerFactory);
+            //  app.UseLoggingConfiguration(loggerFactory);
 
             app.UseEndpoints(endpoints =>
             {

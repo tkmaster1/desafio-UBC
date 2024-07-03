@@ -6,6 +6,7 @@ using UBC.Core.WebApi.Models.Responses;
 
 namespace UBC.Core.WebApi.Controllers
 {
+    [ApiController]
     public abstract class MainAPIController : ControllerBase
     {
         #region Properties
@@ -14,7 +15,7 @@ namespace UBC.Core.WebApi.Controllers
 
         private readonly INotificador _notificador;
 
-        public readonly IUserAppService _appUser;
+        public readonly IUserLoginAppService _appUser;
 
         protected Guid UsuarioId { get; set; }
 
@@ -25,7 +26,7 @@ namespace UBC.Core.WebApi.Controllers
         #region Constructor
 
         protected MainAPIController(INotificador notificador,
-                                    IUserAppService appUser)
+                                    IUserLoginAppService appUser)
         {
             _notificador = notificador;
             _appUser = appUser;
