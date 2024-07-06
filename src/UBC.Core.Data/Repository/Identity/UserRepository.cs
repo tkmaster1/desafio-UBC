@@ -17,19 +17,19 @@ namespace UBC.Core.Data.Repository.Identity
 
         #region Methods Public
 
-        public async Task<UserEntity> FindByEmailAsync(string email)
+        public async Task<UserEntity> FindByNameAsync(string userName)
         {
             return await DbIdentityContext.TbUsers
                                           .AsNoTracking()
-                                          .Where(x => x.Email == email)
+                                          .Where(x => x.UserName == userName)
                                           .FirstOrDefaultAsync();
         }
 
-        public async Task<UserEntity> GetUserIdentityById(string codigoUser)
+        public async Task<UserEntity> GetUserIdentityById(string codeUser)
         {
             return await DbIdentityContext.TbUsers
                                           .AsNoTracking()
-                                          .Where(x => x.Id == codigoUser)
+                                          .Where(x => x.Id == codeUser)
                                           .FirstOrDefaultAsync();
         }
 

@@ -4,7 +4,7 @@ namespace UBC.Core.Domain.Interfaces.Services.Identity
 {
     public interface IUserAppService : IDisposable
     {
-        Task<UserEntity> FindByEmail(string email);
+        Task<UserEntity> FindByName(string userName);
 
         Task<UserEntity> GetUserIdentityById(string codeUser);
     }

@@ -17,10 +17,10 @@ namespace UBC.Core.Service.Facades.Interfaces.Identity
         /// <summary>
         /// Método que gera o Token para a aplicação
         /// </summary>
-        /// <param name="email"></param>
+        /// <param name="userName"></param>
         /// <param name="authorizationSettings"></param>
         /// <returns></returns>
-        Task<LoginUserResponseDTO> GerarJwt(string email, AuthorizationSettings authorizationSettings);
+        Task<LoginUserResponseDTO> GerarJwt(string userName, AuthorizationSettings authorizationSettings);
 
         /// <summary>
         /// Método que realiza o Cadastro do usuário na aplicação

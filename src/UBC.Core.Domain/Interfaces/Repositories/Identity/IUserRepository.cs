@@ -4,7 +4,7 @@ namespace UBC.Core.Domain.Interfaces.Repositories.Identity
 {
     public interface IUserRepository : IRepositoryBase<UserEntity>
     {
-        Task<UserEntity> FindByEmailAsync(string email);
+        Task<UserEntity> FindByNameAsync(string userName);
 
         Task<UserEntity> GetUserIdentityById(string codeUser);
     }

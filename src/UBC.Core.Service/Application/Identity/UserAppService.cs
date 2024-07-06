@@ -30,8 +30,8 @@ namespace UBC.Core.Service.Application.Identity
 
         #region Methods Public
 
-        public async Task<UserEntity> FindByEmail(string email)
-            => await _userRepository.FindByEmailAsync(email);
+        public async Task<UserEntity> FindByName(string userName)
+            => await _userRepository.FindByNameAsync(userName);
 
         public async Task<UserEntity> GetUserIdentityById(string codigoUser)
             => await _userRepository.GetUserIdentityById(codigoUser);

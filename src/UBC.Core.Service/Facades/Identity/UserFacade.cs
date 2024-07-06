@@ -37,9 +37,9 @@ namespace UBC.Core.Service.Facades.Identity
             return _mapper.Map<UserDTO>(result);
         }
 
-        public async Task<bool> ExistsEmailUser(string email)
+        public async Task<bool> ExistsUserName(string userName)
         {
-            var result = await _userAppService.FindByEmail(email);
+            var result = await _userAppService.FindByName(userName);
 
             if (result != null)
                 return true;

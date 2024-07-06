@@ -12,10 +12,10 @@ namespace UBC.Core.Service.Facades.Interfaces.Identity
         Task<UserDTO> GetUserByCode(string codeUser);
 
         /// <summary>
-        /// Método que retorna os dados do usuário através da pesquisa por E-mail
+        /// Método que retorna os dados do usuário através da pesquisa por UserName (E-mail)
         /// </summary>
-        /// <param name="email"></param>
+        /// <param name="userName"></param>
         /// <returns></returns>
-        Task<bool> ExistsEmailUser(string email);
+        Task<bool> ExistsUserName(string userName);
     }
 }

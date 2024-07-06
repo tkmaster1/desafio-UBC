@@ -43,9 +43,9 @@ namespace UBC.Core.Service.Application.Identity
 
         public async Task<IdentityResult> RegisterUserIdentity(UserEntity entity)
         {
-            var verifyEmail = await _userIdentityRepository.FindByEmailAsync(entity.Email);
+            var verifyUserName = await _userIdentityRepository.FindByNameAsync(entity.UserName);
 
-            if (verifyEmail != null)
+            if (verifyUserName != null)
                 throw new ValidationException("Conta já existente!");
 
             IdentityResult resultado = await _userManager.CreateAsync(entity, entity.PasswordHash);
@@ -55,9 +55,9 @@ namespace UBC.Core.Service.Application.Identity
             return resultado;
         }
 
-        public async Task<LoginUserResponse> GerarJwt(string email, AuthorizationSettings authorizationSettings)
+        public async Task<LoginUserResponse> GerarJwt(string userName, AuthorizationSettings authorizationSettings)
         {
-            var user = await _userManager.FindByEmailAsync(email);
+            var user = await _userManager.FindByNameAsync(userName);
             var claims = await _userManager.GetClaimsAsync(user);
 
             var identityClaims = await ObterClaimsUsuario(claims, user);
@@ -83,7 +83,7 @@ namespace UBC.Core.Service.Application.Identity
             var userRoles = await _userManager.GetRolesAsync(user);
 
             claims.Add(new Claim(JwtRegisteredClaimNames.NameId, user.Id));
-            claims.Add(new Claim(JwtRegisteredClaimNames.Email, user.Email));
+            //  claims.Add(new Claim(JwtRegisteredClaimNames.Email, user.Email));
             claims.Add(new Claim(JwtRegisteredClaimNames.Name, user.UserName));
             claims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
             claims.Add(new Claim(JwtRegisteredClaimNames.Nbf, ToUnixEpochDate(DateTime.UtcNow).ToString()));
@@ -125,7 +125,7 @@ namespace UBC.Core.Service.Application.Identity
                 UserToken = new UserTokenResponse
                 {
                     Id = user.Id,
-                    Email = user.Email,
+                    // Email = user.Email,
                     UserName = user.UserName,
                     Claims = claims.Select(c => new UserClaimResponse { Type = c.Type, Value = c.Value })
                 }

@@ -1,11 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UBC.Core.Domain.Entities;
 using UBC.Core.Domain.Interfaces.Notifications;
 using UBC.Core.Domain.Interfaces.Services.Identity;
@@ -46,7 +41,7 @@ namespace UBC.Core.Service.Facades.Identity
 
         public async Task<LoginUserResult> Login(LoginUserRequestDTO userRequestDto)
         {
-            var user = await _userAppService.FindByEmail(userRequestDto.Email);
+            var user = await _userAppService.FindByName(userRequestDto.UserName);
 
             if (user == null) throw new ValidationException("Usuário ou Senha incorretos");
 
@@ -57,9 +52,9 @@ namespace UBC.Core.Service.Facades.Identity
             return _mapper.Map<LoginUserResult>(result);
         }
 
-        public async Task<LoginUserResponseDTO> GerarJwt(string email, AuthorizationSettings authorizationSettings)
+        public async Task<LoginUserResponseDTO> GerarJwt(string userName, AuthorizationSettings authorizationSettings)
         {
-            var gerarJwtDomain = await _loginRegisterUserAppService.GerarJwt(email, authorizationSettings);
+            var gerarJwtDomain = await _loginRegisterUserAppService.GerarJwt(userName, authorizationSettings);
 
             var login = _mapper.Map<LoginUserResponseDTO>(gerarJwtDomain);
 
@@ -86,9 +81,8 @@ namespace UBC.Core.Service.Facades.Identity
             return new UserDTO
             {
                 CodeUser = Guid.NewGuid().ToString(),
-                UserName = registerUser.Email,
+                UserName = registerUser.UserName,
                 Password = registerUser.Password,
-                Email = registerUser.Email,
             };
         }
 

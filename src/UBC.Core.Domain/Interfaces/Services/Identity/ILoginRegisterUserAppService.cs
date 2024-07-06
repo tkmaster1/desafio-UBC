@@ -7,7 +7,7 @@ namespace UBC.Core.Domain.Interfaces.Services.Identity
 {
     public interface ILoginRegisterUserAppService : IDisposable
     {
-        Task<LoginUserResponse> GerarJwt(string email, AuthorizationSettings authorizationSettings);
+        Task<LoginUserResponse> GerarJwt(string userName, AuthorizationSettings authorizationSettings);
 
         Task<SignInResult> PasswordSignIn(string userName, LoginUser loginUser);
 

@@ -56,7 +56,7 @@ namespace UBC.Core.WebApi.Controllers
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            var existe = await _userFacade.ExistsEmailUser(loginUser.Email);
+            var existe = await _userFacade.ExistsUserName(loginUser.UserName);
 
             if (!existe)
             {
@@ -67,7 +67,7 @@ namespace UBC.Core.WebApi.Controllers
                     var result = await _loginRegisterUserFacade.Login(loginUser);
 
                     if (result.Succeeded)
-                        return CustomResponse(await _loginRegisterUserFacade.GerarJwt(loginUser.Email, _authorizationSettings));
+                        return CustomResponse(await _loginRegisterUserFacade.GerarJwt(loginUser.UserName, _authorizationSettings));
 
                     if (result.IsLockedOut) return CustomResponse(loginUser);
                 }
@@ -77,7 +77,7 @@ namespace UBC.Core.WebApi.Controllers
                 var result = await _loginRegisterUserFacade.Login(loginUser);
 
                 if (result.Succeeded)
-                    return CustomResponse(await _loginRegisterUserFacade.GerarJwt(loginUser.Email, _authorizationSettings));
+                    return CustomResponse(await _loginRegisterUserFacade.GerarJwt(loginUser.UserName, _authorizationSettings));
 
                 if (result.IsLockedOut) return CustomResponse(loginUser);
             }

@@ -32,10 +32,7 @@ namespace UBC.Core.Data.EntityConfig
                 .HasColumnName("Password");
 
             builder
-                .Property(p => p.Email)
-                .HasColumnType("varchar(256)")
-                .IsRequired()
-                .HasColumnName("Email");
+                .Ignore(s => s.Email);
 
             builder
                 .Ignore(s => s.NormalizedEmail);

@@ -15,8 +15,7 @@ namespace UBC.Core.Data.Mappers
         {
             CreateMap<UserEntity, UserDTO>()
               .ForMember(o => o.CodeUser, s => s.MapFrom(z => z.Id))
-              .ForMember(o => o.UserName, s => s.MapFrom(z => z.Email))
-              .ForMember(o => o.Email, s => s.MapFrom(z => z.Email))
+              .ForMember(o => o.UserName, s => s.MapFrom(z => z.UserName))
               .ForMember(o => o.Password, s => s.MapFrom(z => z.PasswordHash))
               .ReverseMap();
         }
