@@ -1,4 +1,4 @@
-# desafio-UBC
+# desafioUBC-Core
 Teste de Web Api para trabalho
 
 # --------------------------------------------------------------------------

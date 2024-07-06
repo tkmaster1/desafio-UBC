@@ -16,26 +16,26 @@ namespace UBC.Core.WebApi.Controllers
     {
         #region Properties
 
-        private readonly IStudentFacade _studentFacade;
-        private readonly IUserLoginAppService _user;
+        private readonly IStudentsFacade _studentFacade;
+        private readonly IUserLoginAppService _userLoginAppService;
 
         #endregion
 
         #region Constructor
 
-        public StudentsController(IStudentFacade studentFacade,
+        public StudentsController(IStudentsFacade studentFacade,
                             INotificador notificador,
-                            IUserLoginAppService user) : base(notificador, user)
+                            IUserLoginAppService userLoginAppService) : base(notificador, userLoginAppService)
         {
             _studentFacade = studentFacade;
-            _user = user;
+            _userLoginAppService = userLoginAppService;
         }
 
         #endregion
 
         #region Methods
 
-        [HttpGet("obterPorCodigo/{code}")]
+        [HttpGet("getByCode/{code}")]
         [Consumes("application/Json")]
         [Produces("application/Json")]
         [ProducesResponseType(typeof(ResponseBaseEntity), 200)]
@@ -47,7 +47,7 @@ namespace UBC.Core.WebApi.Controllers
         public async Task<IActionResult> ObterPorCodigo(int code)
         => CustomResponse(await _studentFacade.ObterPorCodigo(code));
 
-        [HttpGet("listarTodos")]
+        [HttpGet("listAll")]
         [Consumes("application/Json")]
         [Produces("application/Json")]
         [ProducesResponseType(typeof(ResponseBaseEntity), 200)]
@@ -63,7 +63,7 @@ namespace UBC.Core.WebApi.Controllers
             return CustomResponse(result);
         }
 
-        [HttpPost("buscarEstudantes")]
+        [HttpPost("searchStudents")]
         [Consumes("application/Json")]
         [Produces("application/Json")]
         [ProducesResponseType(typeof(ResponseBaseEntity), 200)]
@@ -72,14 +72,14 @@ namespace UBC.Core.WebApi.Controllers
         [ProducesResponseType(typeof(ResponseFailed), 409)]
         [ProducesResponseType(typeof(ResponseFailed), 500)]
         [ProducesResponseType(typeof(ResponseFailed), 502)]
-        public async Task<ActionResult<PaginationDTO<StudentDTO>>> BuscarEstudantes([FromBody] StudentFilterDTO studentFilterDTO)
+        public async Task<ActionResult<PaginationDTO<StudentsDTO>>> BuscarEstudantes([FromBody] StudentsFilterDTO studentFilterDTO)
         {
             var result = await _studentFacade.ListarPorFiltros(studentFilterDTO);
 
             return CustomResponse(result);
         }
 
-        [HttpPost("incluir")]
+        [HttpPost("include")]
         [Consumes("application/Json")]
         [Produces("application/Json")]
         [ProducesResponseType(typeof(ResponseBaseEntity), 200)]
@@ -88,7 +88,7 @@ namespace UBC.Core.WebApi.Controllers
         [ProducesResponseType(typeof(ResponseFailed), 409)]
         [ProducesResponseType(typeof(ResponseFailed), 500)]
         [ProducesResponseType(typeof(ResponseFailed), 502)]
-        public async Task<IActionResult> SalvarNovoEstudante([FromBody] StudentRequestDTO studentRequestDTO)
+        public async Task<IActionResult> SalvarNovoEstudante([FromBody] StudentsRequestDTO studentRequestDTO)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -98,7 +98,7 @@ namespace UBC.Core.WebApi.Controllers
             return CustomResponse(id);
         }
 
-        [HttpPut("alterar")]
+        [HttpPut("edit")]
         [Consumes("application/Json")]
         [Produces("application/Json")]
         [ProducesResponseType(typeof(bool), 200)]
@@ -107,7 +107,7 @@ namespace UBC.Core.WebApi.Controllers
         [ProducesResponseType(typeof(ResponseFailed), 409)]
         [ProducesResponseType(typeof(ResponseFailed), 500)]
         [ProducesResponseType(typeof(ResponseFailed), 502)]
-        public async Task<IActionResult> AlterarEstudante([FromBody] StudentRequestDTO studentRequestDTO)
+        public async Task<IActionResult> AlterarEstudante([FromBody] StudentsRequestDTO studentRequestDTO)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -115,7 +115,7 @@ namespace UBC.Core.WebApi.Controllers
             return CustomResponse(await _studentFacade.AtualizarEstudante(studentRequestDTO));
         }
 
-        [HttpDelete("excluir/{codigo}")]
+        [HttpDelete("delete/{codigo}")]
         [Consumes("application/Json")]
         [Produces("application/Json")]
         [ProducesResponseType(typeof(bool), 200)]

@@ -30,8 +30,8 @@ namespace UBC.Core.Service.Facades.Interfaces.Identity
         /// <summary>
         /// Método que realiza o Cadastro do usuário na aplicação
         /// </summary>
-        /// <param name="userIdentityEntity"></param>
+        /// <param name="registerUser"></param>
         /// <returns></returns>
-        Task<IdentityResult> RegisterUserIdentity(RegisterUserRequestDTO registerUserRequestDTO);
+        Task<IdentityResult> RegisterUserIdentity(LoginUserRequestDTO registerUser); //RegisterUserRequestDTO registerUserRequestDTO);
     }
 }

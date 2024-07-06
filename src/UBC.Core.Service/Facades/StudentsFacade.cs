@@ -9,18 +9,18 @@ using UBC.Core.Service.Facades.Interfaces;
 
 namespace UBC.Core.Service.Facades
 {
-    public class StudentFacade : IStudentFacade
+    public class StudentsFacade : IStudentsFacade
     {
         #region Properties
 
         private readonly IMapper _mapper;
-        private readonly IStudentAppService _studentAppService;
+        private readonly IStudentsAppService _studentAppService;
 
         #endregion
 
         #region Constructor
 
-        public StudentFacade(IMapper mapper, IStudentAppService studentAppService)
+        public StudentsFacade(IMapper mapper, IStudentsAppService studentAppService)
         {
             _mapper = mapper;
             _studentAppService = studentAppService;
@@ -30,34 +30,34 @@ namespace UBC.Core.Service.Facades
 
         #region Methods
 
-        public async Task<StudentDTO> ObterPorCodigo(int codigo)
+        public async Task<StudentsDTO> ObterPorCodigo(int codigo)
         {
             var menuSystemDomain = await _studentAppService.GetByCode(codigo);
 
-            return _mapper.Map<StudentDTO>(menuSystemDomain);
+            return _mapper.Map<StudentsDTO>(menuSystemDomain);
         }
 
-        public async Task<IList<StudentDTO>> ListarTodos()
+        public async Task<IList<StudentsDTO>> ListarTodos()
         {
             var menuSystemResultDomain = await _studentAppService.ListAll();
 
-            var menuSystemResult = _mapper.Map<IList<StudentDTO>>(menuSystemResultDomain);
+            var menuSystemResult = _mapper.Map<IList<StudentsDTO>>(menuSystemResultDomain);
 
             return menuSystemResult;
         }
 
-        public async Task<PaginationDTO<StudentDTO>> ListarPorFiltros(StudentFilterDTO filterDto)
+        public async Task<PaginationDTO<StudentsDTO>> ListarPorFiltros(StudentsFilterDTO filterDto)
         {
             var filter = _mapper.Map<StudentFilter>(filterDto);
 
             var result = await _studentAppService.ListByFilters(filter);
 
-            var resultDto = _mapper.Map<PaginationDTO<StudentDTO>>(result);
+            var resultDto = _mapper.Map<PaginationDTO<StudentsDTO>>(result);
 
             return resultDto;
         }
 
-        public async Task<int> CriarEstudante(StudentRequestDTO studentRequestDTO)
+        public async Task<int> CriarEstudante(StudentsRequestDTO studentRequestDTO)
         {
             var studentDomain = _mapper.Map<StudentEntity>(studentRequestDTO);
 
@@ -66,7 +66,7 @@ namespace UBC.Core.Service.Facades
             return codigo;
         }
 
-        public async Task<bool> AtualizarEstudante(StudentRequestDTO studentRequestDTO)
+        public async Task<bool> AtualizarEstudante(StudentsRequestDTO studentRequestDTO)
         {
             var studentDomain = _mapper.Map<StudentEntity>(studentRequestDTO);
 

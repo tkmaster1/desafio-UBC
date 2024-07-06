@@ -8,17 +8,17 @@ using UBC.Core.Domain.Models;
 
 namespace UBC.Core.Service.Application
 {
-    public class StudentAppService : IStudentAppService
+    public class StudentsAppService : IStudentsAppService
     {
         #region Properties
 
-        private readonly IStudentRepository _studentRepository;
+        private readonly IStudentsRepository _studentRepository;
 
         #endregion
 
         #region Constructor
 
-        public StudentAppService(IStudentRepository studentRepository)
+        public StudentsAppService(IStudentsRepository studentRepository)
         {
             _studentRepository = studentRepository;
         }

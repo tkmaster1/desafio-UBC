@@ -66,9 +66,9 @@ namespace UBC.Core.Service.Facades.Identity
             return login;
         }
 
-        public async Task<IdentityResult> RegisterUserIdentity(RegisterUserRequestDTO registerUserRequestDTO)
+        public async Task<IdentityResult> RegisterUserIdentity(LoginUserRequestDTO loginUserRequest) //RegisterUserRequestDTO registerUserRequestDTO)
         {
-            var user = GetUserFromRegisterUser(registerUserRequestDTO);
+            var user = GetUserFromRegisterUser(loginUserRequest); //registerUserRequestDTO);
 
             var usuario = _mapper.Map<UserEntity>(user);
 
@@ -81,7 +81,7 @@ namespace UBC.Core.Service.Facades.Identity
 
         #region Methods Private
 
-        private UserDTO GetUserFromRegisterUser(RegisterUserRequestDTO registerUser)
+        private UserDTO GetUserFromRegisterUser(LoginUserRequestDTO registerUser) //RegisterUserRequestDTO registerUser)
         {
             return new UserDTO
             {

@@ -1,6 +1,6 @@
 ﻿namespace UBC.Core.Service.DTO.Filters
 {
-    public class StudentFilterDTO
+    public class StudentsFilterDTO
     {
         /// <summary>
         /// Id do estudante

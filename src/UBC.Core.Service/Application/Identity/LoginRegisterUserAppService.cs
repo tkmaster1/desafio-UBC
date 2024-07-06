@@ -67,10 +67,10 @@ namespace UBC.Core.Service.Application.Identity
         }
 
         public async Task<SignInResult> PasswordSignIn(string userName, LoginUser loginUser)
-            => await _signInManager.PasswordSignInAsync(userName, loginUser.Password, loginUser.RememberMe, lockoutOnFailure: false);
+            => await _signInManager.PasswordSignInAsync(userName, loginUser.Password, true, lockoutOnFailure: false);
 
         public async Task<SignInResult> PasswordSignIn(UserEntity userEntity, LoginUser loginUser)
-            => await _signInManager.PasswordSignInAsync(userEntity, loginUser.Password, loginUser.RememberMe, lockoutOnFailure: false);
+            => await _signInManager.PasswordSignInAsync(userEntity, loginUser.Password, true, lockoutOnFailure: false);
 
         public void Dispose() => GC.SuppressFinalize(this);
 

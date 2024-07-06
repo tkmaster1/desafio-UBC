@@ -34,7 +34,7 @@ namespace UBC.Core.WebApi.Configurations
 
             services.AddTransient<ILoginRegisterUserFacade, LoginRegisterUserFacade>();
             services.AddTransient<IUserFacade, UserFacade>();
-            services.AddScoped<IStudentFacade, StudentFacade>();
+            services.AddScoped<IStudentsFacade, StudentsFacade>();
 
             #endregion
 
@@ -43,7 +43,7 @@ namespace UBC.Core.WebApi.Configurations
             services.AddScoped<IUserLoginAppService, UserLoginAppService>();
             services.AddTransient<ILoginRegisterUserAppService, LoginRegisterUserAppService>();
             services.AddTransient<IUserAppService, UserAppService>();
-            services.AddScoped<IStudentAppService, StudentAppService>();
+            services.AddScoped<IStudentsAppService, StudentsAppService>();
 
             #endregion
 
@@ -53,7 +53,7 @@ namespace UBC.Core.WebApi.Configurations
             services.AddScoped<IdentityContext>();
 
             services.AddTransient<IUserRepository, UserRepository>();
-            services.AddScoped<IStudentRepository, StudentRepository>();
+            services.AddScoped<IStudentsRepository, StudentsRepository>();
 
             #endregion
         }

@@ -4,7 +4,7 @@ using UBC.Core.Domain.Models;
 
 namespace UBC.Core.Domain.Interfaces.Services
 {
-    public interface IStudentAppService : IDisposable
+    public interface IStudentsAppService : IDisposable
     {
         Task<StudentEntity> GetByCode(int code);
 

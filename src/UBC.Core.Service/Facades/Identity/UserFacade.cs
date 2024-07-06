@@ -37,6 +37,16 @@ namespace UBC.Core.Service.Facades.Identity
             return _mapper.Map<UserDTO>(result);
         }
 
+        public async Task<bool> ExistsEmailUser(string email)
+        {
+            var result = await _userAppService.FindByEmail(email);
+
+            if (result != null)
+                return true;
+
+            return false;
+        }
+
         public void Dispose() => GC.SuppressFinalize(this);
 
         #endregion

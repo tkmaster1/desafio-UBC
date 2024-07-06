@@ -4,37 +4,37 @@ using UBC.Core.Service.DTO.Students;
 
 namespace UBC.Core.Service.Facades.Interfaces
 {
-    public interface IStudentFacade : IDisposable
+    public interface IStudentsFacade : IDisposable
     {
         /// <summary>
         /// ObterPorCodigo
         /// </summary>
         /// <param name="codigo"></param>
         /// <returns></returns>
-        Task<StudentDTO> ObterPorCodigo(int codigo);
+        Task<StudentsDTO> ObterPorCodigo(int codigo);
 
-        Task<IList<StudentDTO>> ListarTodos();
+        Task<IList<StudentsDTO>> ListarTodos();
 
         /// <summary>
         /// ListarPorFiltros
         /// </summary>
         /// <param name="filterDTO"></param>
         /// <returns></returns>
-        Task<PaginationDTO<StudentDTO>> ListarPorFiltros(StudentFilterDTO filterDTO);
+        Task<PaginationDTO<StudentsDTO>> ListarPorFiltros(StudentsFilterDTO filterDTO);
 
         /// <summary>
         /// CriarMenuSistema
         /// </summary>
         /// <param name="studentRequestDTO"></param>
         /// <returns></returns>
-        Task<int> CriarEstudante(StudentRequestDTO studentRequestDTO);
+        Task<int> CriarEstudante(StudentsRequestDTO studentRequestDTO);
 
         /// <summary>
         /// AtualizarEstudante
         /// </summary>
         /// <param name="studentRequestDTO"></param>
         /// <returns></returns>
-        Task<bool> AtualizarEstudante(StudentRequestDTO studentRequestDTO);
+        Task<bool> AtualizarEstudante(StudentsRequestDTO studentRequestDTO);
 
         /// <summary>
         /// DeletarEstudante

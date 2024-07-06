@@ -6,11 +6,11 @@ using UBC.Core.Domain.Interfaces.Repositories;
 
 namespace UBC.Core.Data.Repository
 {
-    public class StudentRepository : RepositoryBase<StudentEntity>, IStudentRepository
+    public class StudentsRepository : RepositoryBase<StudentEntity>, IStudentsRepository
     {
         #region Constructor
 
-        public StudentRepository(MeuContexto contexto) : base(contexto) { }
+        public StudentsRepository(MeuContexto contexto) : base(contexto) { }
 
         #endregion
 

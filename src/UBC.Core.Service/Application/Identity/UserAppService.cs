@@ -42,33 +42,6 @@ namespace UBC.Core.Service.Application.Identity
         public async Task<UserEntity> GetUserIdentityById(string codigoUser)
             => await _userRepository.GetUserIdentityById(codigoUser);
 
-        //public async Task<Pagination<UserIdentityEntity>> GetListByFilter(UserIdentityFilter filter)
-        //{
-        //    if (filter == null)
-        //        throw new ValidationException("Filtro é nulo.");
-
-        //    if (filter.PageSize > 100)
-        //        throw new ValidationException("O tamanho máximo de página permitido é 100.");
-
-        //    if (filter.CurrentPage <= 0) filter.PageSize = 1;
-
-        //    var total = await _userIdentityRepository.CountByFilterAsync(filter);
-
-        //    if (total == 0) return new Pagination<UserIdentityEntity>();
-
-        //    var paginateResult = await _userIdentityRepository.GetListByFilterAsync(filter);
-
-        //    var result = new Pagination<UserIdentityEntity>
-        //    {
-        //        Count = total,
-        //        CurrentPage = filter.CurrentPage,
-        //        PageSize = filter.PageSize,
-        //        Result = paginateResult.ToList()
-        //    };
-
-        //    return result;
-        //}
-
         public void Dispose() => GC.SuppressFinalize(this);
 
         #endregion

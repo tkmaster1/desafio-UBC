@@ -17,14 +17,14 @@ namespace UBC.Core.Data.Mappers
 
         private void CreateStudentProfile()
         {
-            CreateMap<StudentEntity, StudentDTO>().ReverseMap();
-            CreateMap<StudentFilterDTO, StudentFilter>();
-            CreateMap<StudentRequestDTO, StudentEntity>();
+            CreateMap<StudentEntity, StudentsDTO>().ReverseMap();
+            CreateMap<StudentsFilterDTO, StudentFilter>();
+            CreateMap<StudentsRequestDTO, StudentEntity>();
 
-            CreateMap<Pagination<StudentEntity>, PaginationDTO<StudentDTO>>()
+            CreateMap<Pagination<StudentEntity>, PaginationDTO<StudentsDTO>>()
             .AfterMap((source, converted, context) =>
             {
-                converted.Result = context.Mapper.Map<List<StudentDTO>>(source.Result);
+                converted.Result = context.Mapper.Map<List<StudentsDTO>>(source.Result);
             });
         }
     }
