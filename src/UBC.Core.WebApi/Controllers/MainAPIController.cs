@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using UBC.Core.Domain.Interfaces.Notifications;
 using UBC.Core.Domain.Interfaces.Services.Identity;
-using UBC.Core.Domain.Notifications;
 using UBC.Core.WebApi.Models.Responses;
 
 namespace UBC.Core.WebApi.Controllers

@@ -1,9 +1,4 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UBC.Core.Domain.Models;
 using UBC.Core.Domain.Models.Result;
 using UBC.Core.Service.DTO.Identity;
@@ -32,6 +27,6 @@ namespace UBC.Core.Service.Facades.Interfaces.Identity
         /// </summary>
         /// <param name="registerUser"></param>
         /// <returns></returns>
-        Task<IdentityResult> RegisterUserIdentity(LoginUserRequestDTO registerUser); //RegisterUserRequestDTO registerUserRequestDTO);
+        Task<IdentityResult> RegisterUserIdentity(LoginUserRequestDTO registerUser);
     }
 }

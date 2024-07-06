@@ -18,10 +18,6 @@ namespace UBC.Core.Service.DTO.Identity
         [Display(Name = "Senha")]
         public string Password { get; set; }
 
-        ////MeLembre
-        //[Display(Name = "Lembrar de mim?")]
-        //public bool RememberMe { get; set; }
-
         [NotMapped]
         public string ReturnUrl { get; set; }
     }

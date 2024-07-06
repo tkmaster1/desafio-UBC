@@ -5,7 +5,6 @@ using UBC.Core.Domain.Interfaces.Notifications;
 using UBC.Core.Domain.Interfaces.Services.Identity;
 using UBC.Core.Domain.Models;
 using UBC.Core.Service.DTO.Identity;
-using UBC.Core.Service.Facades.Identity;
 using UBC.Core.Service.Facades.Interfaces.Identity;
 using UBC.Core.WebApi.Models.Responses;
 
@@ -85,22 +84,6 @@ namespace UBC.Core.WebApi.Controllers
 
             return CustomResponse(null, true, "Usuário ou Senha incorretos");
         }
-
-        //[HttpGet("getUserAuthByCode")]
-        //[Consumes("application/Json")]
-        //[Produces("application/Json")]
-        //[ProducesResponseType(typeof(ResponseBaseEntity), 200)]
-        //[ProducesResponseType(typeof(ResponseFailed), 400)]
-        //[ProducesResponseType(typeof(ResponseFailed), 403)]
-        //[ProducesResponseType(typeof(ResponseFailed), 409)]
-        //[ProducesResponseType(typeof(ResponseFailed), 500)]
-        //[ProducesResponseType(typeof(ResponseFailed), 502)]
-        //public async Task<IActionResult> GetUserAuthByCode([FromQuery] string codeUser)
-        //{
-        //    var result = await _userFacade.GetUserByCode(codeUser);
-
-        //    return CustomResponse(result);
-        //}
 
         #endregion
     }

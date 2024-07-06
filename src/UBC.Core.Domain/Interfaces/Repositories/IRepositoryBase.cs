@@ -1,5 +1,4 @@
 ﻿using System.Linq.Expressions;
-using UBC.Core.Domain.Entities;
 
 namespace UBC.Core.Domain.Interfaces.Repositories
 {
@@ -25,8 +24,6 @@ namespace UBC.Core.Domain.Interfaces.Repositories
         /// <param name="code"></param>
         /// <returns></returns>
         Task<bool> Exist(int code);
-
-        // Task<IEnumerable<TEntity>> ObterPorCodigos(IEnumerable<int> codigos);
 
         /// <summary>
         /// Buscar
@@ -87,24 +84,8 @@ namespace UBC.Core.Domain.Interfaces.Repositories
         /// Salvar
         /// </summary>
         /// <returns></returns>
-       int ToSave();
+        int ToSave();
 
         Task<int> ToSaveChangesAsync();
-
-        #region Identity
-
-        ///// <summary>
-        ///// Atualizar Identity
-        ///// </summary>
-        ///// <param name="entity"></param>
-        //void UpdateIdentity(TEntity entity);
-
-        ///// <summary>
-        ///// Salvar Identity
-        ///// </summary>
-        ///// <returns></returns>
-        //Task<int> SaveIdentity();
-
-        #endregion
     }
 }

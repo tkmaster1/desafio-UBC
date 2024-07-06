@@ -70,5 +70,4 @@ namespace UBC.Core.WebApi.Configurations.Filters
 
         #endregion
     }
-
 }

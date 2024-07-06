@@ -20,7 +20,7 @@ builder.Services.AddSwaggerConfiguration(builder.Configuration);
 builder.Services.AddDependencyInjectionConfiguration(builder.Configuration);
 
 // Inicio AutoMapper
-builder.Services.AddAutoMapper(typeof(StudentProfile));//UserIdentityProfile
+builder.Services.AddAutoMapper(typeof(StudentProfile));
 
 #region Databases Configurations
 
@@ -45,4 +45,3 @@ app.UseApiCommonsConfiguration(app.Environment, loggerFactory);
 await app.RunAsync();
 
 #endregion
-

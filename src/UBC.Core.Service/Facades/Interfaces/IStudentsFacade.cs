@@ -13,6 +13,10 @@ namespace UBC.Core.Service.Facades.Interfaces
         /// <returns></returns>
         Task<StudentsDTO> ObterPorCodigo(int codigo);
 
+        /// <summary>
+        /// Lista todos os usuários
+        /// </summary>
+        /// <returns></returns>
         Task<IList<StudentsDTO>> ListarTodos();
 
         /// <summary>

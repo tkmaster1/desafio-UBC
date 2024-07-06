@@ -1,13 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UBC.Core.Domain.Entities;
 using UBC.Core.Domain.Interfaces.Repositories.Identity;
 using UBC.Core.Domain.Interfaces.Services.Identity;
-using UBC.Core.Domain.Models;
 
 namespace UBC.Core.Service.Application.Identity
 {

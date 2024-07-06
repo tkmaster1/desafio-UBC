@@ -7,9 +7,5 @@ namespace UBC.Core.Domain.Interfaces.Repositories.Identity
         Task<UserEntity> FindByEmailAsync(string email);
 
         Task<UserEntity> GetUserIdentityById(string codeUser);
-
-        //Task<int> CountByFilterAsync(UserFilter filter);
-
-        //Task<List<UserEntity>> GetListByFilterAsync(UserFilter filter);       
     }
 }

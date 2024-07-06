@@ -32,43 +32,31 @@ namespace UBC.Core.Data.EntityConfig
 
             builder
                 .Property(p => p.Series)
-             //   .IsRequired()
                 .HasColumnName("Serie");
 
             builder
                 .Property(p => p.AverageGrade)
-              //  .IsRequired()
                 .HasColumnName("NotaMedia");
 
             builder
                 .Property(p => p.Address)
                 .HasColumnType("varchar(Max)")
-              //  .IsRequired()
                 .HasColumnName("Endereco");
 
             builder
                 .Property(p => p.FatherName)
                 .HasColumnType("varchar(256)")
-               // .IsRequired()
                 .HasColumnName("NomePai");
 
             builder
                 .Property(p => p.MotherName)
                 .HasColumnType("varchar(256)")
-               // .IsRequired()
                 .HasColumnName("NomeMae");
 
             builder
                 .Property(p => p.DateBirth)
                 .IsRequired()
                 .HasColumnName("DataNascimento");
-
-            //// 1 : * => Area : Arquivos
-            //builder
-            //    .HasOne(p => p.Area)
-            //    .WithMany(e => e.Arquivos)
-            //    .HasForeignKey(e => e.CodigoArea);
-
         }
     }
 }

@@ -34,7 +34,6 @@ namespace UBC.Core.WebApi.Configurations
                 options.Tokens.PasswordResetTokenProvider = "7DaysToken";
             })
                .AddDefaultUI()
-               // .AddErrorDescriber<IdentityMensagensPortugues>()
                .AddEntityFrameworkStores<IdentityContext>()
                .AddDefaultTokenProviders()
                .AddTokenProvider<DataProtectorTokenProvider<UserEntity>>("7DaysToken");

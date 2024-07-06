@@ -46,16 +46,12 @@ namespace UBC.Core.WebApi.Configurations
 
             services.AddDistributedMemoryCache();
 
-            //   services.AddConfigureSameSiteCookies();
-
             services.AddCors();
 
             services.AddMvc(options =>
             {
                 options.SuppressAsyncSuffixInActionNames = false;
             });
-
-      //      IdentityModelEventSource.ShowPII = true;
 
             var provider = services.BuildServiceProvider();
 
@@ -91,8 +87,6 @@ namespace UBC.Core.WebApi.Configurations
              );
 
             app.UseIdentityConfiguration();
-
-            //  app.UseLoggingConfiguration(loggerFactory);
 
             app.UseEndpoints(endpoints =>
             {

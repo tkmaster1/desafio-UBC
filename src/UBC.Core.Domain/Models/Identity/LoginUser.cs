@@ -6,8 +6,5 @@
 
         // Senha
         public string Password { get; set; }
-
-        //// MeLembre
-        //public bool RememberMe { get; set; }
     }
 }
