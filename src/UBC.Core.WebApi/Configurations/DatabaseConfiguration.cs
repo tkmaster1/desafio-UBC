@@ -16,7 +16,7 @@ namespace UBC.Core.WebApi.Configurations
             if (services == null) throw new ArgumentNullException(nameof(services));
 
             services.AddDbContext<MeuContexto>(options =>
-                             options.UseInMemoryDatabase("TestConnection"));
+                             options.UseInMemoryDatabase("DefaultConnection"));
         }
 
         #region IdentityConfiguration
