@@ -80,6 +80,7 @@ namespace UBC.Core.WebApi.Configurations
              (
                  c =>
                  {
+                     c.WithOrigins("http://localhost:3000/");
                      c.AllowAnyOrigin();
                      c.AllowAnyHeader();
                      c.AllowAnyMethod();

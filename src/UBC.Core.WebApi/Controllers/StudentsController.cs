@@ -10,7 +10,7 @@ using UBC.Core.WebApi.Models.Responses;
 
 namespace UBC.Core.WebApi.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     public class StudentsController : MainAPIController
     {
